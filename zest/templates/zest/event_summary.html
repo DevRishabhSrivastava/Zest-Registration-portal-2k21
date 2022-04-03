@@ -1,0 +1,58 @@
+{% extends 'zest/base.html' %}
+{% block content %}
+<div class="container" >
+  <div class="row justify-content-center d-none d-print-block text-center mb-4">
+    <div class="text-theme">
+      <h5>Shri Ram Murti Smarak College Of Engineering & Technology,Bareilly</h5>
+      <h5>Ram Murti Puram, Bareilly - Nainital Rd, Highway, Bhojipura, Uttar Pradesh 243202</h5>
+      <h4 class="pt-2"><b>Zest 2021 Registration Details</b></h4>
+    </div>
+  </div>
+  <div class="row rounded mt-4 bg-warning">
+    <div class="col-md-12 p-2 text-center">
+      <h4>Registration Summary</h4>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover bg-white">
+        <thead>
+          <tr class="text-center">
+            <th scope="col" style="width:33%">Event Name </th>
+            <th scope="col" style="width:35%">Total Count</th>
+            <th scope="col" style="width:37%">Action</th>
+          </tr>
+        </thead>  
+        <tbody>
+          {% for event in i_events %}
+          <tr>
+            <td class="align-middle text-center p-1">{{event.event_name}}</td>
+            <td class="text-center align-middle p-1">{{event.pid_count}}</td>
+            <td class="align-middle text-center p-1">
+              <a href="{% url 'event_details' event.id %}" class="btn serach-btn btn-warning">View Details</a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% for event in t_events %}
+          <tr>
+            <td class="align-middle text-center p-1">{{event.event_name}}</td>
+            <td class="text-center align-middle p-1">{{event.tid_count}}</td>
+            <td class="align-middle text-center p-1">
+              <a href="{% url 't_event_details' event.id %}" class="btn serach-btn btn-warning">View Details</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row d-print-none">
+    <div class="col-md-12 mt-2  text-center">
+      <form>
+        <input class="btn btn-color serach-btn " type="button" value="Print this page" onClick="window.print()">
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
